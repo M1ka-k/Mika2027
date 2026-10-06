@@ -36,18 +36,18 @@ public partial class RegisterPage : ContentPage
         }
         else if (isValidPass)
         {
-            errorMsgName.Text = "Not in Correct Email Format";
-            errorMsgPass.Text = "good";
+            errorMsgName.Text = "InCorrect Email Format";
+            errorMsgPass.Text = "Good";
         }
         else if (isValidName)
         {
-            errorMsgPass.Text = "Not in Correct Password Format";
-            errorMsgName.Text = "good";
+            errorMsgPass.Text = "InCorrect Password Format";
+            errorMsgName.Text = "Good";
         }
         else
         {
-            errorMsgPass.Text = "Not in Correct Password Format";
-            errorMsgName.Text = "Not in Correct Email Format";
+            errorMsgPass.Text = "InCorrect Password Format";
+            errorMsgName.Text = "InCorrect Email Format";
         }
     }
 

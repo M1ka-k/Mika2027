@@ -31,7 +31,7 @@ public partial class LoginPage : ContentPage
             {
                 errorMsgName.Text = "Get in";
                 errorMsgPass.Text = "Get in";
-                // TODO: נווט לעמוד הראשי
+                
             }
             else if (DataRepo.user.GetPassword() == password.Text)
             {
