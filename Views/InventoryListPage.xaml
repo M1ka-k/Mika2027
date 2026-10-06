@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mika2027.Views.InventoryListPage"
+             Title="Inventory List Page">
+    <ScrollView>
+    <FlexLayout Wrap="Wrap" x:Name="YarnFlexLayout">
+        <Border x:Name="Shelf"
+            Background="Beige"
+            StrokeShape="RoundRectangle 10"
+            StrokeThickness="0"
+            WidthRequest="200"
+            HeightRequest="235"
+            Margin="5">
+                <Grid RowDefinitions="2.2*, 1.3*">
+                <Image Source="heartland_frosted_amber.png"
+                       Grid.Row="0" 
+                       Margin="5"
+                       Aspect="AspectFill"></Image>
+                    <VerticalStackLayout Margin="7" Grid.Row="1">
+                    <Label Text="Name Yarn"
+                    FontAttributes="Bold"
+                           FontSize="14"
+                           LineBreakMode="TailTruncation"
+                           MaxLines="1"/>
+                        <Label Text="Brand Name"
+                               FontSize="12"
+                               TextColor="Gray"
+                               LineBreakMode="TailTruncation"
+                        MaxLines="1"/>
+                        <Label Text="fiber •  fiber"
+                               FontSize="11"
+                               TextColor="DarkSlateGray"
+                               LineBreakMode="TailTruncation"
+                               MaxLines="1"/>
+                        <Label Text="x skein(s) • x g • x yds"
+                               FontSize="11"
+                               TextColor="Black"
+                               FontAttributes="Italic"/>
+                    </VerticalStackLayout>
+
+            </Grid>
+
+        </Border>
+        </FlexLayout>
+    </ScrollView>
+</ContentPage>

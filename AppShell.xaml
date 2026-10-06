@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Mika2027.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Mika2027.Views"
+    Title="Mika2027"
+    FlyoutBehavior="Locked">
+
+    <ShellContent
+        Title="Inventory"
+        ContentTemplate="{DataTemplate local:InventoryListPage}"
+        Route="InventoryListPage" />
+
+    <ShellContent
+    Title="Login"
+    ContentTemplate="{DataTemplate local:LoginPage}"
+    Route="LoginPage" />
+
+    <ShellContent
+    Title="Register"
+    ContentTemplate="{DataTemplate local:RegisterPage}"
+    Route="RegisterPage" />
+
+
+
+</Shell>
