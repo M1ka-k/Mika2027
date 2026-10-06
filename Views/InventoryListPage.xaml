@@ -5,7 +5,7 @@
              Title="Inventory List Page">
     <ScrollView>
     <FlexLayout Wrap="Wrap" x:Name="YarnFlexLayout">
-        <Border x:Name="Shelf"
+        <!--<Border x:Name="Shelf"
             Background="Beige"
             StrokeShape="RoundRectangle 10"
             StrokeThickness="0"
@@ -41,7 +41,7 @@
 
             </Grid>
 
-        </Border>
+        </Border>-->
         </FlexLayout>
     </ScrollView>
 </ContentPage>

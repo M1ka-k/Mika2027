@@ -10,8 +10,8 @@ public partial class InventoryListPage : ContentPage
     public InventoryListPage()
     {
         InitializeComponent();
-        //LoadYarnData();
-        //PopulateYarnList();
+        LoadYarnData();
+        PopulateYarnList();
     }
 
     private void LoadYarnData()
