@@ -22,7 +22,7 @@ public partial class LoginPage : ContentPage
 
         if (userName.Text == "")
         {
-            errorMsgName.Text = "Please enter your username";
+            errorMsgName.Text = "Please enter your email";
         }
 
         if (password.Text == "")
@@ -36,36 +36,38 @@ public partial class LoginPage : ContentPage
         }
 
         // Email format validation
-        string regExpStrName = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
-        bool isValidName = Regex.IsMatch(userName.Text, regExpStrName);
+        string regExpStrEmail = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+        bool isValidEmail = Regex.IsMatch(userName.Text, regExpStrEmail);
 
         // Password format validation
-        string regExpStrPass = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
+        string regExpStrPass =
+            @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
+
         bool isValidPass = Regex.IsMatch(password.Text, regExpStrPass);
 
-        if (!isValidName)
+        if (!isValidEmail)
         {
-            errorMsgName.Text = "incorrect Email Format";
+            errorMsgName.Text = "Incorrect Email Format";
         }
 
         if (!isValidPass)
         {
-            errorMsgPass.Text = "incorrect Password Format";
+            errorMsgPass.Text = "Incorrect Password Format";
         }
 
         // If the format is incorrect, stop
-        if (!isValidName || !isValidPass)
+        if (!isValidEmail || !isValidPass)
         {
             return;
         }
 
-        // Find the user in DataRepo
-        User user = DataRepo.GetUser(userName.Text);
+        // Find the user by email
+        User user = DataRepo.GetUserByEmail(userName.Text);
 
-        // Username does not exist
+        // Email does not exist
         if (user == null)
         {
-            errorMsgName.Text = "Username incorrect";
+            errorMsgName.Text = "Email incorrect";
             return;
         }
 
@@ -96,3 +98,4 @@ public partial class LoginPage : ContentPage
         await Navigation.PushModalAsync(new RegisterPage());
     }
 }
+

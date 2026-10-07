@@ -55,28 +55,40 @@ public partial class RegisterPage : ContentPage
         // Email
         string emailRegex = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
 
-        bool isValidEmail =
-            email.Text != "" &&
-            Regex.IsMatch(email.Text, emailRegex);
-
-        if (!isValidEmail)
+        if (email.Text == "")
+        {
+            errorMsgEmail.Text = "Please enter your email";
+            isValid = false;
+        }
+        else if (!Regex.IsMatch(email.Text, emailRegex))
         {
             errorMsgEmail.Text = "Incorrect email format";
             isValid = false;
+        }
+        else
+        {
+            User existingEmail = DataRepo.GetUserByEmail(email.Text);
+
+            if (existingEmail != null)
+            {
+                errorMsgEmail.Text = "Email already exists";
+                isValid = false;
+            }
         }
 
         // Password
         string passwordRegex =
             @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$";
 
-        bool isValidPassword =
-            password1.Text != "" &&
-            Regex.IsMatch(password1.Text, passwordRegex);
-
-        if (!isValidPassword)
+        if (password1.Text == "")
+        {
+            errorMsgPass.Text = "Please enter a password";
+            isValid = false;
+        }
+        else if (!Regex.IsMatch(password1.Text, passwordRegex))
         {
             errorMsgPass.Text =
-                "Password must contain 8 characters, uppercase, lowercase and number";
+                "Password must contain at least 8 characters, uppercase, lowercase and number";
 
             isValid = false;
         }
@@ -93,7 +105,7 @@ public partial class RegisterPage : ContentPage
             isValid = false;
         }
 
-        // Stop if there is an error
+        // Stop if there are errors
         if (!isValid)
         {
             return;
@@ -107,31 +119,23 @@ public partial class RegisterPage : ContentPage
         newUser.SetUsername(userName.Text);
         newUser.SetPassword(password1.Text);
 
-        // Add user to the list
+        // Add user
         DataRepo.users.Add(newUser);
 
         // Go to Login
         await Navigation.PushModalAsync(new LoginPage());
     }
 
+    // Show password while button is pressed
     private void Show_Password(object sender, EventArgs e)
     {
         password1.IsPassword = false;
     }
 
+    // Hide password when button is released
     private void Hide_Password(object sender, EventArgs e)
     {
         password1.IsPassword = true;
-    }
-
-    private void Show_Confirm_Password(object sender, EventArgs e)
-    {
-        password2.IsPassword = false;
-    }
-
-    private void Hide_Confirm_Password(object sender, EventArgs e)
-    {
-        password2.IsPassword = true;
     }
 
     private async void LinkToLogin(object sender, EventArgs e)
@@ -139,3 +143,4 @@ public partial class RegisterPage : ContentPage
         await Navigation.PushModalAsync(new LoginPage());
     }
 }
+
