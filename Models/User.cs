@@ -4,25 +4,29 @@ namespace Mika2027.Models
 {
     public class User
     {
-        public string Name { get; set; }
+        public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string PName { get; set; }
-        public string FName { get; set; }
-        public DateTime BirthDate { get; set; }
+        public string FullName { get; set; }
 
-        public User() { }
 
-        public User(string username, string password)
+        public string GetUsername()
         {
-            Email = username;
-            Password = password;
+            return Username;
+        }
+        public void SetUsername(string username)
+        {
+            Username = username;
         }
 
-        public string GetUserName() => Email;
-        public void SetUsername(string username) => Email = username;
+        public string GetPassword()
+        {
+            return Password;
+        }
+        public void SetPassword(string password)
+        {
+            Password = password;
 
-        public string GetPassword() => Password;
-        public void SetPassword(string password) => Password = password;
+        }
     }
-}
+    }

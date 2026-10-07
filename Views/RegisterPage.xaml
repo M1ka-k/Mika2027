@@ -1,70 +1,113 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mika2027.Views.RegisterPage"
-             Title="RegisterPage">
-    <Grid RowDefinitions="*,Auto" >
-        <VerticalStackLayout Spacing="10" Grid.Row ="0">
-            <Entry
-                Placeholder="Enter your username"
-                MaxLength="50"
-                x:Name="userName"
-                 />
-            <Label
-                x:Name="errorMsgName"
-                TextColor ="Red"
-                FontSize="Micro"
-            />
+             Title="Sign Up">
 
-            <Grid   ColumnDefinitions="*, auto">
-                <Entry
-                    Placeholder="Enter your password"
-                    MaxLength="50"
-                    IsPassword="True"
-                    x:Name="password1"
-                />
+    <ScrollView>
+
+        <Grid Padding="35,20">
+
+            <VerticalStackLayout Spacing="8">
+
+                    <!-- Full Name -->
+                    <Entry x:Name="fullName"
+                           Placeholder="Enter full name"
+                           MaxLength="50" />
+
+                    <Label x:Name="errorMsgFullName"
+                           TextColor="Red"
+                           FontSize="10" />
 
 
-                <Button
-                    Grid.Column="1" Text="O"
-                    Pressed="Show_Password"
-                    Released="Hide_Password"
-                />
+                    <!-- Username -->
+                    <Entry x:Name="userName"
+                           Placeholder="Enter Username"
+                           MaxLength="50" />
 
-            </Grid>
-            <Entry
- Placeholder="Verfy your password"
- MaxLength="50"
- IsPassword="True"
- x:Name="password2"
- />
-            <Label
-                x:Name="errorMsgPass"
-                TextColor ="Red"
-                FontSize="Micro"
-            />
-
-        </VerticalStackLayout>
-        <VerticalStackLayout  Grid.Row="2">
-            <Button
-    
-                x:Name = "sendToLogin"
-                Text="Already have an account Login"
-                BackgroundColor="Transparent"
-                TextColor="Purple"
-                Clicked= "LinkToLogin"
-                />
-
-            <Button
-                
-         Grid.Row="2"
-         x:Name = "RegisterButton"
-         Text="Register"
-         Clicked="Button_Clicked_Register"
-         
-        />
-        </VerticalStackLayout>
+                    <Label x:Name="errorMsgName"
+                           TextColor="Red"
+                           FontSize="10" />
 
 
-    </Grid>
+                    <!-- Email -->
+                    <Entry x:Name="email"
+                           Placeholder="Enter Email"
+                           MaxLength="100"
+                           Keyboard="Email" />
+
+                    <Label x:Name="errorMsgEmail"
+                           TextColor="Red"
+                           FontSize="10" />
+
+
+                    <!-- Password -->
+                    <Grid ColumnDefinitions="*,45">
+
+                        <Entry x:Name="password1"
+                               Placeholder="Enter password"
+                               MaxLength="50"
+                               IsPassword="True" />
+
+                        <Button Grid.Column="1"
+                                Text="O"
+                                Padding="0"
+                                Pressed="Show_Password"
+                                Released="Hide_Password" />
+
+                    </Grid>
+
+                    <Label x:Name="errorMsgPass"
+                           TextColor="Red"
+                           FontSize="10" />
+
+
+                    <!-- Confirm Password -->
+                    <Grid ColumnDefinitions="*,45">
+
+                        <Entry x:Name="password2"
+                               Placeholder="Confirm password"
+                               MaxLength="50"
+                               IsPassword="True" />
+
+                        <Button Grid.Column="1"
+                                Text="O"
+                                Padding="0"
+                                Pressed="Show_Confirm_Password"
+                                Released="Hide_Confirm_Password" />
+
+                    </Grid>
+
+                    <Label x:Name="errorMsgConfirm"
+                           TextColor="Red"
+                           FontSize="10" />
+
+
+                    <!-- Link to Login -->
+                    <Button x:Name="sendToLogin"
+                            Text="Already have an account? Login here"
+                            BackgroundColor="Transparent"
+                            TextColor="Black"
+                            FontSize="14"
+                            Clicked="LinkToLogin"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,0" />
+
+
+                    <!-- Register Button -->
+                    <Button x:Name="RegisterButton"
+                            Text="Send"
+                            Clicked="Button_Clicked_Register"
+                            WidthRequest="120"
+                            HorizontalOptions="Center"
+                            CornerRadius="25" />
+
+                </VerticalStackLayout>
+
+
+        </Grid>
+
+    </ScrollView>
+
 </ContentPage>

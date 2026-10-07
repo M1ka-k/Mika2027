@@ -5,7 +5,7 @@ namespace Mika2027.Views;
 
 public partial class InventoryListPage : ContentPage
 {
-    private List<Yarn> _yarns = new List<Yarn>();
+    private List<Yarn> yarns = new List<Yarn>();
 
     public InventoryListPage()
     {
@@ -16,7 +16,7 @@ public partial class InventoryListPage : ContentPage
 
     private void LoadYarnData()
     {
-        _yarns.Add(new Yarn
+        yarns.Add(new Yarn
         {
             Name = "Beach Ball",
             Brand = "Lily Sugar N'cream",
@@ -36,7 +36,7 @@ public partial class InventoryListPage : ContentPage
             Image = "beach_ball.png"
         });
 
-        _yarns.Add(new Yarn
+        yarns.Add(new Yarn
         {
             Name = "Sugar Jewels",
             Brand = "Lily Sugar N'cream",
@@ -56,7 +56,7 @@ public partial class InventoryListPage : ContentPage
             Image = "sugar_jewels.png"
         });
 
-        _yarns.Add(new Yarn
+        yarns.Add(new Yarn
         {
             Name = "Plush",
             Brand = "BIG TWIST",
@@ -76,7 +76,7 @@ public partial class InventoryListPage : ContentPage
             Image = "plush_pink.png"
         });
 
-        _yarns.Add(new Yarn
+        yarns.Add(new Yarn
         {
             Name = "Heartland-Frosted Ember",
             Brand = "Lion Brand",
@@ -97,7 +97,7 @@ public partial class InventoryListPage : ContentPage
             Image = "heartland_frosted_amber.png"
         });
 
-        _yarns.Add(new Yarn
+        yarns.Add(new Yarn
         {
             Name = "Wool-Ease Thick & Quick",
             Brand = "Lion Brand",
@@ -118,7 +118,7 @@ public partial class InventoryListPage : ContentPage
             Image = "thick_and_quick_blue.png"
         });
 
-        _yarns.Add(new Yarn
+        yarns.Add(new Yarn
         {
             Name = "Cotton Fair Multi",
             Brand = "Premier Yarns",
@@ -144,7 +144,7 @@ public partial class InventoryListPage : ContentPage
     {
         YarnFlexLayout.Children.Clear();
 
-        foreach (var yarn in _yarns)
+        foreach (var yarn in yarns)
         {
             YarnFlexLayout.Children.Add(CreateYarnBorder(yarn));
         }

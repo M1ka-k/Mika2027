@@ -5,8 +5,21 @@ using System.Text;
 
 namespace Mika2027.Services
 {
-    internal class DataRepo
+    class DataRepo
     {
-        public static User user = new User();
+        public static List<User> users = new List<User>();
+
+
+        public static User GetUser(string username)
+        {
+            foreach (User user in users)
+            {
+                if(user.GetUsername() == username)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
     }
 }

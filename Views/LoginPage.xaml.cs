@@ -1,6 +1,7 @@
-using Mika2027.Services;
+using System;
 using System.Text.RegularExpressions;
 using Mika2027.Models;
+using Mika2027.Services;
 
 namespace Mika2027.Views;
 
@@ -9,66 +10,91 @@ public partial class LoginPage : ContentPage
     public LoginPage()
     {
         InitializeComponent();
+
         userName.Text = "";
         password.Text = "";
     }
 
     private void Button_Clicked_Login(object sender, EventArgs e)
     {
+        errorMsgName.Text = "";
+        errorMsgPass.Text = "";
+
+        if (string.IsNullOrEmpty(userName.Text))
+        {
+            errorMsgName.Text = "Please enter your username";
+        }
+
+        if (string.IsNullOrEmpty(password.Text))
+        {
+            errorMsgPass.Text = "Please enter your password";
+        }
+
+        if (string.IsNullOrEmpty(userName.Text) ||
+            string.IsNullOrEmpty(password.Text))
+        {
+            return;
+        }
+
+        // Email format validation
         string regExpStrName = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
         bool isValidName = Regex.IsMatch(userName.Text, regExpStrName);
 
-        string regExpStrPass = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
+        // Password format validation
+        string regExpStrPass =@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
         bool isValidPass = Regex.IsMatch(password.Text, regExpStrPass);
 
-        if (isValidName && isValidPass)
+        if (!isValidName)
         {
-            errorMsgName.Text = "good";
-            errorMsgPass.Text = "good";
+            errorMsgName.Text = "incorrect Email Format";
+        }
 
-            if (DataRepo.user.GetUserName() == userName.Text &&
-                DataRepo.user.GetPassword() == password.Text)
-            {
-                errorMsgName.Text = "Get in";
-                errorMsgPass.Text = "Get in";
-                
-            }
-            else if (DataRepo.user.GetPassword() == password.Text)
-            {
-                errorMsgName.Text = "Username incorrect";
-            }
-            else if (DataRepo.user.GetUserName() == userName.Text)
-            {
-                errorMsgPass.Text = "Password incorrect";
-            }
-            else
-            {
-                errorMsgName.Text = "Username incorrect";
-                errorMsgPass.Text = "Password incorrect";
-            }
-        }
-        else if (isValidPass)
+        if (!isValidPass)
         {
-            errorMsgName.Text = "Not in Correct Email Format";
-            errorMsgPass.Text = "good";
+            errorMsgPass.Text = "incorrect Password Format";
         }
-        else if (isValidName)
+
+        // If the format is incorrect, stop
+        if (!isValidName || !isValidPass)
         {
-            errorMsgPass.Text = "Not in Correct Password Format";
-            errorMsgName.Text = "good";
+            return;
         }
-        else
+
+        // Find the user in DataRepo
+        User user = DataRepo.GetUser(userName.Text);
+
+        // Username does not exist
+        if (user == null)
         {
-            errorMsgPass.Text = "Not in Correct Password Format";
-            errorMsgName.Text = "Not in Correct Email Format";
+            errorMsgName.Text = "Username incorrect";
+            return;
         }
+
+        // Password is incorrect
+        if (user.GetPassword() != password.Text)
+        {
+            errorMsgPass.Text = "Password incorrect";
+            return;
+        }
+
+        // Login successful
+        errorMsgName.Text = "Get in";
+        errorMsgPass.Text = "Get in";
     }
 
-    private void Show_Password(object sender, EventArgs e) => password.IsPassword = false;
-    private void Hide_Password(object sender, EventArgs e) => password.IsPassword = true;
+    private void Show_Password(object sender, EventArgs e)
+    {
+        password.IsPassword = false;
+    }
+
+    private void Hide_Password(object sender, EventArgs e)
+    {
+        password.IsPassword = true;
+    }
 
     private async void LinkToReg(object sender, EventArgs e)
     {
         await Navigation.PushModalAsync(new RegisterPage());
     }
 }
+
