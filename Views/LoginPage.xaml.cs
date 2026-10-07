@@ -20,18 +20,17 @@ public partial class LoginPage : ContentPage
         errorMsgName.Text = "";
         errorMsgPass.Text = "";
 
-        if (string.IsNullOrEmpty(userName.Text))
+        if (userName.Text == "")
         {
             errorMsgName.Text = "Please enter your username";
         }
 
-        if (string.IsNullOrEmpty(password.Text))
+        if (password.Text == "")
         {
             errorMsgPass.Text = "Please enter your password";
         }
 
-        if (string.IsNullOrEmpty(userName.Text) ||
-            string.IsNullOrEmpty(password.Text))
+        if (userName.Text == "" || password.Text == "")
         {
             return;
         }
@@ -41,7 +40,7 @@ public partial class LoginPage : ContentPage
         bool isValidName = Regex.IsMatch(userName.Text, regExpStrName);
 
         // Password format validation
-        string regExpStrPass =@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
+        string regExpStrPass = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
         bool isValidPass = Regex.IsMatch(password.Text, regExpStrPass);
 
         if (!isValidName)
@@ -97,4 +96,3 @@ public partial class LoginPage : ContentPage
         await Navigation.PushModalAsync(new RegisterPage());
     }
 }
-

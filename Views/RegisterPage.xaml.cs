@@ -28,14 +28,15 @@ public partial class RegisterPage : ContentPage
 
         bool isValid = true;
 
-        if (string.IsNullOrEmpty(fullName.Text))
+        // Full Name
+        if (fullName.Text == "")
         {
             errorMsgFullName.Text = "Please enter your full name";
             isValid = false;
         }
 
-
-        if (string.IsNullOrEmpty(userName.Text))
+        // Username
+        if (userName.Text == "")
         {
             errorMsgName.Text = "Please enter a username";
             isValid = false;
@@ -51,10 +52,12 @@ public partial class RegisterPage : ContentPage
             }
         }
 
+        // Email
+        string emailRegex = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
 
-        string emailRegex =@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
-
-        bool isValidEmail =!string.IsNullOrEmpty(email.Text) &&Regex.IsMatch(email.Text, emailRegex);
+        bool isValidEmail =
+            email.Text != "" &&
+            Regex.IsMatch(email.Text, emailRegex);
 
         if (!isValidEmail)
         {
@@ -62,21 +65,24 @@ public partial class RegisterPage : ContentPage
             isValid = false;
         }
 
-        string passwordRegex =@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+        // Password
+        string passwordRegex =
+            @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$";
 
         bool isValidPassword =
-            !string.IsNullOrEmpty(password1.Text) &&
+            password1.Text != "" &&
             Regex.IsMatch(password1.Text, passwordRegex);
 
         if (!isValidPassword)
         {
-            errorMsgPass.Text ="Password must contain 8 characters, uppercase, lowercase and number";
+            errorMsgPass.Text =
+                "Password must contain 8 characters, uppercase, lowercase and number";
 
             isValid = false;
         }
 
-
-        if (string.IsNullOrEmpty(password2.Text))
+        // Confirm Password
+        if (password2.Text == "")
         {
             errorMsgConfirm.Text = "Please confirm your password";
             isValid = false;
@@ -87,12 +93,13 @@ public partial class RegisterPage : ContentPage
             isValid = false;
         }
 
+        // Stop if there is an error
         if (!isValid)
         {
             return;
         }
 
-
+        // Create new user
         User newUser = new User();
 
         newUser.FullName = fullName.Text;
@@ -100,9 +107,10 @@ public partial class RegisterPage : ContentPage
         newUser.SetUsername(userName.Text);
         newUser.SetPassword(password1.Text);
 
+        // Add user to the list
         DataRepo.users.Add(newUser);
 
-
+        // Go to Login
         await Navigation.PushModalAsync(new LoginPage());
     }
 
@@ -131,4 +139,3 @@ public partial class RegisterPage : ContentPage
         await Navigation.PushModalAsync(new LoginPage());
     }
 }
-
