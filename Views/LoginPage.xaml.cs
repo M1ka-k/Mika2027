@@ -35,13 +35,10 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        // Email format validation
         string regExpStrEmail = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
         bool isValidEmail = Regex.IsMatch(userName.Text, regExpStrEmail);
 
-        // Password format validation
-        string regExpStrPass =
-            @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
+        string regExpStrPass =@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
 
         bool isValidPass = Regex.IsMatch(password.Text, regExpStrPass);
 
@@ -55,30 +52,25 @@ public partial class LoginPage : ContentPage
             errorMsgPass.Text = "Incorrect Password Format";
         }
 
-        // If the format is incorrect, stop
         if (!isValidEmail || !isValidPass)
         {
             return;
         }
 
-        // Find the user by email
         User user = DataRepo.GetUserByEmail(userName.Text);
 
-        // Email does not exist
         if (user == null)
         {
             errorMsgName.Text = "Email incorrect";
             return;
         }
 
-        // Password is incorrect
-        if (user.GetPassword() != password.Text)
+        if (user.Password != password.Text)
         {
             errorMsgPass.Text = "Password incorrect";
             return;
         }
 
-        // Login successful
         errorMsgName.Text = "Get in";
         errorMsgPass.Text = "Get in";
     }

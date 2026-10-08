@@ -7,24 +7,13 @@ namespace Mika2027.Services
     {
         public static List<User> users = new List<User>();
 
-        public static User GetUser(string username)
-        {
-            foreach (User user in users)
-            {
-                if (user.GetUsername() == username)
-                {
-                    return user;
-                }
-            }
 
-            return null;
-        }
 
         public static User GetUserByEmail(string email)
         {
             foreach (User user in users)
             {
-                if (user.Email == email)
+                if (user.Email.ToLower() == email.ToLower())
                 {
                     return user;
                 }

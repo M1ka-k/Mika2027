@@ -8,7 +8,6 @@
         <Grid Padding="35,20">
             <VerticalStackLayout Spacing="8">
 
-                <!-- Full Name -->
                 <Entry x:Name="fullName"
                        Placeholder="Enter full name"
                        MaxLength="50" />
@@ -17,16 +16,6 @@
                        TextColor="Red"
                        FontSize="10" />
 
-                <!-- Username -->
-                <Entry x:Name="userName"
-                       Placeholder="Enter Username"
-                       MaxLength="50" />
-
-                <Label x:Name="errorMsgName"
-                       TextColor="Red"
-                       FontSize="10" />
-
-                <!-- Email -->
                 <Entry x:Name="email"
                        Placeholder="Enter Email"
                        MaxLength="100"
@@ -36,7 +25,6 @@
                        TextColor="Red"
                        FontSize="10" />
 
-                <!-- Password -->
                 <Grid ColumnDefinitions="*,45">
 
                     <Entry x:Name="password1"
@@ -56,7 +44,6 @@
                        TextColor="Red"
                        FontSize="10" />
 
-                <!-- Confirm Password -->
                 <Entry x:Name="password2"
                        Placeholder="Confirm password"
                        MaxLength="50"
@@ -66,7 +53,6 @@
                        TextColor="Red"
                        FontSize="10" />
 
-                <!-- Go to Login -->
                 <Button x:Name="sendToLogin"
                         Text="Already have an account? Login here"
                         BackgroundColor="Transparent"
@@ -76,7 +62,6 @@
                         HorizontalOptions="Center"
                         Margin="0,10,0,0" />
 
-                <!-- Register -->
                 <Button x:Name="RegisterButton"
                         Text="SignUp"
                         Clicked="Button_Clicked_Register"
