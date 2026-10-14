@@ -1,6 +1,5 @@
 using Mika2027.Models;
 using Mika2027.Services;
-using System;
 using System.Text.RegularExpressions;
 
 namespace Mika2027.Views;
@@ -57,8 +56,7 @@ public partial class RegisterPage : ContentPage
         }
 
         // Password
-        string passwordRegex =
-            @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+        string passwordRegex = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$";
 
         if (password1.Text == "")
         {
@@ -67,8 +65,7 @@ public partial class RegisterPage : ContentPage
         }
         else if (!Regex.IsMatch(password1.Text, passwordRegex))
         {
-            errorMsgPass.Text =
-                "Password must contain at least 8 characters, uppercase, lowercase and number";
+            errorMsgPass.Text = "Password must contain at least 8 characters, uppercase, lowercase and number";
 
             isValid = false;
         }

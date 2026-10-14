@@ -53,6 +53,7 @@
                        TextColor="Red"
                        FontSize="10" />
 
+
                 <Button x:Name="sendToLogin"
                         Text="Already have an account? Login here"
                         BackgroundColor="Transparent"
