@@ -12,9 +12,9 @@ namespace Mika2027.Services
         {
             users.Add(new User
             {
-                Email = "mika@example.com",
-                Password = "Mika12345",
-                FullName = "Mika Cohen"
+                Email = "rom@example.com",
+                Password = "ron12345",
+                FullName = "Ron Cohen"
             });
 
             users.Add(new User

@@ -94,7 +94,7 @@ public partial class RegisterPage : ContentPage
         newUser.Password= password1.Text;
 
         DataRepo.users.Add(newUser);
-        await Navigation.PushModalAsync(new LoginPage());
+        await Shell.Current.GoToAsync("//MainPage");
     }
 
     private void Show_Password(object sender, EventArgs e)
@@ -109,7 +109,7 @@ public partial class RegisterPage : ContentPage
 
     private async void LinkToLogin(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new LoginPage());
+        await Shell.Current.GoToAsync("//LoginPage()");
     }
 }
 

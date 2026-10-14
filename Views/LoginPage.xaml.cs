@@ -15,7 +15,7 @@ public partial class LoginPage : ContentPage
         password.Text = "";
     }
 
-    private void Button_Clicked_Login(object sender, EventArgs e)
+    private async void Button_Clicked_Login(object sender, EventArgs e)
     {
         errorMsgName.Text = "";
         errorMsgPass.Text = "";
@@ -71,8 +71,7 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        errorMsgName.Text = "Get in";
-        errorMsgPass.Text = "Get in";
+        await Shell.Current.GoToAsync("//MainPage");
     }
 
     private void Show_Password(object sender, EventArgs e)
@@ -87,7 +86,7 @@ public partial class LoginPage : ContentPage
 
     private async void LinkToReg(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new RegisterPage());
+        await Shell.Current.GoToAsync("//RegisterPage");
     }
 }
 
