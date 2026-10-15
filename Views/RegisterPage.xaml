@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mika2027.Views.RegisterPage"
@@ -8,13 +8,15 @@
         <Grid Padding="35,20">
             <VerticalStackLayout Spacing="8">
 
+                <Label x:Name="errorMsgGenral"
+                       Style="{StaticResource ErrorLabel}"/>
+
                 <Entry x:Name="fullName"
                        Placeholder="Enter full name"
                        MaxLength="50" />
 
                 <Label x:Name="errorMsgFullName"
-                       TextColor="Red"
-                       FontSize="10" />
+                       Style="{StaticResource ErrorLabel}" />
 
                 <Entry x:Name="email"
                        Placeholder="Enter Email"
@@ -22,8 +24,7 @@
                        Keyboard="Email" />
 
                 <Label x:Name="errorMsgEmail"
-                       TextColor="Red"
-                       FontSize="10" />
+                       Style="{StaticResource ErrorLabel}" />
 
                 <Grid ColumnDefinitions="*,45">
 
@@ -33,16 +34,18 @@
                            IsPassword="True" />
 
                     <Button Grid.Column="1"
-                            Text="O"
+                            x:Name="togglePassBtn"
+                            Text="◠"
                             Padding="0"
-                            Pressed="Show_Password"
-                            Released="Hide_Password" />
+                            CornerRadius="30"
+                            BackgroundColor="{x:StaticResource MikaPrimary}"
+                            Pressed="ShowPassword"
+                            Released="HidePassword" />
 
                 </Grid>
 
                 <Label x:Name="errorMsgPass"
-                       TextColor="Red"
-                       FontSize="10" />
+                       Style="{StaticResource ErrorLabel}" />
 
                 <Entry x:Name="password2"
                        Placeholder="Confirm password"
@@ -50,25 +53,18 @@
                        IsPassword="True" />
 
                 <Label x:Name="errorMsgConfirm"
-                       TextColor="Red"
-                       FontSize="10" />
-
+                       Style="{StaticResource ErrorLabel}" />
 
                 <Button x:Name="sendToLogin"
                         Text="Already have an account? Login here"
-                        BackgroundColor="Transparent"
-                        TextColor="Blue"
-                        FontSize="14"
-                        Clicked="LinkToLogin"
-                        HorizontalOptions="Center"
-                        Margin="0,10,0,0" />
+                        Style="{StaticResource LinkButton}"
+                         />
 
                 <Button x:Name="RegisterButton"
                         Text="SignUp"
-                        Clicked="Button_Clicked_Register"
-                        WidthRequest="120"
+                        Clicked="ButtonClickedRegister"
                         HorizontalOptions="Center"
-                        CornerRadius="25" />
+                        Style="{StaticResource SuperButton}" />
 
             </VerticalStackLayout>
         </Grid>

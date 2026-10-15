@@ -170,17 +170,11 @@ namespace Mika2027.Services
                 Image = "cotton_fair_turquoise.png"
             });
         }
-        public static User GetUserByEmail(string email)
+        public static bool CheckUserAuth(string email, string password)
         {
-            foreach (User user in users)
-            {
-                if (user.Email.ToLower() == email.ToLower())
-                {
-                    return user;
-                }
-            }
-
-            return null;
+            var user = users.Find(infoUser => infoUser.Email.ToLower() == email.ToLower() && infoUser.Password == password);
+            return user != null;
         }
+
     }
 }

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mika2027.Views.LoginPage"
@@ -9,51 +8,49 @@
 
         <Grid Padding="35,20">
 
+            <VerticalStackLayout Spacing="9">
 
-            <VerticalStackLayout Spacing="8">
+                <Label x:Name="errorMsgGenral"
+                       Style="{StaticResource ErrorLabel}" />
 
                 <Entry x:Name="userName"
-                           Placeholder="Enter Username"
-                           MaxLength="50" />
+                       Placeholder="Enter Username"
+                       MaxLength="50" />
 
                 <Label x:Name="errorMsgName"
-                           TextColor="Red"
-                           FontSize="10" />
+                        Style="{StaticResource ErrorLabel}"  />
 
                 <Grid ColumnDefinitions="*,45">
 
                     <Entry x:Name="password"
-                               Placeholder="Enter password"
-                               MaxLength="50"
-                               IsPassword="True" />
+                           Placeholder="Enter password"
+                           MaxLength="50"
+                           IsPassword="True" />
 
                     <Button Grid.Column="1"
-                                Text="O"
-                                Padding="0"
-                                Pressed="Show_Password"
-                                Released="Hide_Password" />
+                            Text="◠"
+                            Padding="0"
+                            BackgroundColor="{x:StaticResource MikaPrimary}"
+                            CornerRadius="25"
+                            Pressed="ShowPassword"
+                            Released="HidePassword" />
 
                 </Grid>
 
                 <Label x:Name="errorMsgPass"
-                           TextColor="Red"
-                           FontSize="10" />
+                       Style="{StaticResource ErrorLabel}"/>
 
                 <Button x:Name="sendToReg"
-                            Text="Don't have an account? Sign Up here"
-                            BackgroundColor="Transparent"
-                            TextColor="Blue"
-                            FontSize="14"
-                            Clicked="LinkToReg"
-                            HorizontalOptions="Center"
-                            Margin="0,10,0,0" />
+                        Text="Don't have an account? Sign Up here"
+                        Clicked="LinkToReg"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource LinkButton}"
+                 />
 
                 <Button x:Name="LoginButton"
-                            Text="Login"
-                            Clicked="Button_Clicked_Login"
-                            WidthRequest="120"
-                            HorizontalOptions="Center"
-                            CornerRadius="25" />
+                    Text="Login"
+                    Style="{StaticResource SuperButton}"
+                    Clicked="ButtonClickedLogin" />
 
             </VerticalStackLayout>
 

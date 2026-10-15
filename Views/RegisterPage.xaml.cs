@@ -16,7 +16,7 @@ public partial class RegisterPage : ContentPage
         password2.Text = "";
     }
 
-    private async void Button_Clicked_Register(object sender, EventArgs e)
+    private async void ButtonClickedRegister(object sender, EventArgs e)
     {
         errorMsgFullName.Text = "";
         errorMsgEmail.Text = "";
@@ -30,7 +30,6 @@ public partial class RegisterPage : ContentPage
             errorMsgFullName.Text = "Please enter your full name";
             isValid = false;
         }
-
 
         string emailRegex = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
 
@@ -46,9 +45,9 @@ public partial class RegisterPage : ContentPage
         }
         else
         {
-            User existingEmail = DataRepo.GetUserByEmail(email.Text);
+            var user = DataRepo.users.Find(infoUser => infoUser.Email.ToLower() == email.Text.ToLower());
 
-            if (existingEmail != null)
+            if (user != null)
             {
                 errorMsgEmail.Text = "Email already exists";
                 isValid = false;
@@ -66,7 +65,6 @@ public partial class RegisterPage : ContentPage
         else if (!Regex.IsMatch(password1.Text, passwordRegex))
         {
             errorMsgPass.Text = "Password must contain at least 8 characters, uppercase, lowercase and number";
-
             isValid = false;
         }
 
@@ -91,25 +89,26 @@ public partial class RegisterPage : ContentPage
 
         newUser.FullName = fullName.Text;
         newUser.Email = email.Text;
-        newUser.Password= password1.Text;
+        newUser.Password = password1.Text;
 
         DataRepo.users.Add(newUser);
         await Shell.Current.GoToAsync("//MainPage");
     }
 
-    private void Show_Password(object sender, EventArgs e)
+    private void ShowPassword(object sender, EventArgs e)
     {
         password1.IsPassword = false;
+        togglePassBtn.Text = "⚆";
     }
 
-    private void Hide_Password(object sender, EventArgs e)
+    private void HidePassword(object sender, EventArgs e)
     {
         password1.IsPassword = true;
+        togglePassBtn.Text = "◠";
     }
 
     private async void LinkToLogin(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//LoginPage()");
+        await Shell.Current.GoToAsync("//LoginPage");
     }
 }
-

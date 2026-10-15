@@ -15,8 +15,9 @@ public partial class LoginPage : ContentPage
         password.Text = "";
     }
 
-    private async void Button_Clicked_Login(object sender, EventArgs e)
+    private async void ButtonClickedLogin(object sender, EventArgs e)
     {
+        errorMsgGenral.Text = "";
         errorMsgName.Text = "";
         errorMsgPass.Text = "";
 
@@ -38,8 +39,7 @@ public partial class LoginPage : ContentPage
         string regExpStrEmail = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
         bool isValidEmail = Regex.IsMatch(userName.Text, regExpStrEmail);
 
-        string regExpStrPass =@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
-
+        string regExpStrPass = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
         bool isValidPass = Regex.IsMatch(password.Text, regExpStrPass);
 
         if (!isValidEmail)
@@ -57,29 +57,23 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        User user = DataRepo.GetUserByEmail(userName.Text);
+        bool isAuthenticated = DataRepo.CheckUserAuth(userName.Text, password.Text);
 
-        if (user == null)
+        if (!isAuthenticated)
         {
-            errorMsgName.Text = "Email incorrect";
-            return;
-        }
-
-        if (user.Password != password.Text)
-        {
-            errorMsgPass.Text = "Password incorrect";
+            errorMsgGenral.Text = "Username or password is wrong";
             return;
         }
 
         await Shell.Current.GoToAsync("//MainPage");
     }
 
-    private void Show_Password(object sender, EventArgs e)
+    private void ShowPassword(object sender, EventArgs e)
     {
         password.IsPassword = false;
     }
 
-    private void Hide_Password(object sender, EventArgs e)
+    private void HidePassword(object sender, EventArgs e)
     {
         password.IsPassword = true;
     }
@@ -89,4 +83,3 @@ public partial class LoginPage : ContentPage
         await Shell.Current.GoToAsync("//RegisterPage");
     }
 }
-
