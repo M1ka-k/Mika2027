@@ -11,8 +11,11 @@ namespace Mika2027
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
+                    fonts.AddFont("MontserratAlternates-Regular.ttf", "MontserratRegular");
+                    fonts.AddFont("MontserratAlternates-SemiBold", "MontserratSemibold");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("MaterialIcons-Regular.ttf", "Icons"); ;
                 });
 
 #if DEBUG

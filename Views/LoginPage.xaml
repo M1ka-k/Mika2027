@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
+ 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helper="clr-namespace:Mika2027.Helper"
              x:Class="Mika2027.Views.LoginPage"
              Title="Login">
 
@@ -28,10 +30,12 @@
                            IsPassword="True" />
 
                     <Button Grid.Column="1"
-                            Text="◠"
+                            x:Name="togglePassBtn"
+                            FontFamily="Icons"
+                            Text="{x:Static helper:IconFont.Visibility_off}"
                             Padding="0"
                             BackgroundColor="{x:StaticResource MikaPrimary}"
-                            CornerRadius="25"
+                            CornerRadius="30"
                             Pressed="ShowPassword"
                             Released="HidePassword" />
 

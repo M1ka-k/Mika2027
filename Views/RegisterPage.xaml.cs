@@ -98,13 +98,13 @@ public partial class RegisterPage : ContentPage
     private void ShowPassword(object sender, EventArgs e)
     {
         password1.IsPassword = false;
-        togglePassBtn.Text = "⚆";
+        togglePassBtn.Text = Helper.IconFont.Visibility;
     }
 
     private void HidePassword(object sender, EventArgs e)
     {
         password1.IsPassword = true;
-        togglePassBtn.Text = "◠";
+        togglePassBtn.Text = Helper.IconFont.Visibility_off;
     }
 
     private async void LinkToLogin(object sender, EventArgs e)

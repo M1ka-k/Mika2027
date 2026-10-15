@@ -71,11 +71,13 @@ public partial class LoginPage : ContentPage
     private void ShowPassword(object sender, EventArgs e)
     {
         password.IsPassword = false;
+        togglePassBtn.Text = Helper.IconFont.Visibility;
     }
 
     private void HidePassword(object sender, EventArgs e)
     {
         password.IsPassword = true;
+        togglePassBtn.Text = Helper.IconFont.Visibility_off;
     }
 
     private async void LinkToReg(object sender, EventArgs e)

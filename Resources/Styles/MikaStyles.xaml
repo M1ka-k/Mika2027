@@ -6,6 +6,7 @@
     <Style x:Key="ErrorLabel" TargetType="Label">
         <Setter Property="TextColor" Value="Red" />
         <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontFamily" Value="MontserratRegular" />
     </Style>
 
     <Style x:Key="LinkButton" TargetType="Button">
@@ -18,6 +19,7 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="MinimumWidthRequest" Value="0" />
         <Setter Property="MinimumHeightRequest" Value="0" />
+        <Setter Property="FontFamily" Value="MontserratRegular" />
     </Style>
 
     <Style x:Key="SuperButton" TargetType="Button">
@@ -25,6 +27,7 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="BackgroundColor" Value="{StaticResource MikaPrimary}" />
+        <Setter Property="FontFamily" Value="MontserratRegular" />
     </Style>
 
 
