@@ -13,6 +13,11 @@
         Route="InventoryListPage" />
 
     <ShellContent
+    Title="New Inventory"
+    ContentTemplate="{DataTemplate local:NewInventoryPage}"
+    Route="NewInventoryPage" />
+
+    <ShellContent
     Title="Login"
     ContentTemplate="{DataTemplate local:LoginPage}"
     Route="LoginPage" />

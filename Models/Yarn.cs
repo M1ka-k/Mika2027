@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mika2027.Models
 {
-    class Yarn
+    public class Yarn
     {
         public string Name { get; set; }
         public string? Brand { get; set; }
@@ -22,6 +22,33 @@ namespace Mika2027.Models
         public bool IsMachineWashable { get; set; }
         public bool IsVarigated { get; set; }
         public string? Image { get; set; }
-        
+
+        public string FiberSummary => GetFiberSummary();
+        public string DetailsSummary => GetDetailsSummary();
+
+
+        public string GetFiberSummary()
+        {
+            if (Materials is null || Materials.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            var names = new List<string>(Materials.Count);
+            foreach (var m in Materials)
+            {
+                names.Add(m.FiberName);
+            }
+
+            return string.Join(" • ", names);
+        }
+
+        public string GetDetailsSummary()
+        {
+            return $"{Skeins} skein(s) • {Grams}g • {Yards}yds";
+        }
+
     }
+
+
 }

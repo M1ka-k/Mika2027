@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Mika2027.Models"
+             x:Class="Mika2027.Views.NewInventoryPage">
+
+    <CollectionView ItemsSource="{Binding Yarns}"
+                    Margin="5">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical"
+                             Span="4"
+                             HorizontalItemSpacing="8"
+                             VerticalItemSpacing="8"/>
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:Yarn">
+
+                <!-- Added Shadow and slightly larger corner radius for a cubicle look -->
+                <Border Background="Beige"
+                        StrokeShape="RoundRectangle 8"
+                        StrokeThickness="1"
+                        Stroke="LightGray"
+                        Padding="0">
+                    <Border.Shadow>
+                        <Shadow Brush="Gray" Offset="0,2" Radius="4" Opacity="0.2" />
+                    </Border.Shadow>
+
+                    <!-- Increased Image height from 140 to 180 to make it taller/square-like -->
+                    <Grid RowDefinitions="180, Auto">
+
+                        <!-- Image: Taller box -->
+                        <Image Grid.Row="0"
+                               Aspect="AspectFit"
+                               BackgroundColor="White"
+                               Margin="10"
+                               Source="{Binding Image, TargetNullValue='placeholder.png'}" />
+
+                        <!-- Text area -->
+                        <VerticalStackLayout Grid.Row="1" Padding="10,4,10,8">
+                            <Label Text="{Binding Name}"
+                                   FontAttributes="Bold"
+                                   FontSize="13"
+                                   TextColor="Black"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="1"/>
+
+                            <Label Text="{Binding Brand}"
+                                   FontSize="11"
+                                   TextColor="Gray"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="1"/>
+
+                            <Label Text="{Binding FiberSummary}"
+                                   FontSize="11"
+                                   TextColor="DarkSlateGray"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="1"/>
+
+                            <Label Text="{Binding DetailsSummary}"
+                                   FontSize="11"
+                                   TextColor="Black"
+                                   FontAttributes="Italic"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="1"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

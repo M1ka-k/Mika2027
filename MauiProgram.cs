@@ -12,7 +12,7 @@ namespace Mika2027
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("MontserratAlternates-Regular.ttf", "MontserratRegular");
-                    fonts.AddFont("MontserratAlternates-SemiBold", "MontserratSemibold");
+                    fonts.AddFont("MontserratAlternates-SemiBold.ttf", "MontserratSemibold");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("MaterialIcons-Regular.ttf", "Icons"); ;
